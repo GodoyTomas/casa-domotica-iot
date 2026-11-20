@@ -1,0 +1,5 @@
+esp8266/secrets.h
+.DS_Store
+Thumbs.db
+*.bin
+*.elf
