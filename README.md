@@ -29,8 +29,6 @@ Ambas placas se comunican por UART (`SoftwareSerial` a 9600 bps) mediante un pro
 ![Telegram](https://img.shields.io/badge/Telegram_Bot-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-Sistema de automatización, monitoreo ambiental y seguridad domiciliaria diseñado bajo una **arquitectura de doble microcontrolador**. Separa el control determinista en tiempo real (**Arduino Uno R3**) de la conectividad Wi-Fi y cifrado TLS/HTTPS (**ESP8266**), logrando baja latencia, operación autónoma sin internet y cero bloqueos ante emergencias.
-
 ---
 
 ## 📐 Arquitectura del Sistema
