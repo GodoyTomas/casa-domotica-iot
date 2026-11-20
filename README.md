@@ -20,3 +20,30 @@ Ambas placas se comunican por UART (`SoftwareSerial` a 9600 bps) mediante un pro
 2. Copiar `esp8266/secrets.h.example` como `esp8266/secrets.h` y completar credenciales Wi-Fi y de Telegram.
 3. Cargar `arduino_uno/arduino_uno.ino` en el Arduino Uno R3.
 4. Cargar `esp8266/esp8266.ino` en el ESP8266.
+
+# 🏠 Casa Domótica IoT — Arduino Uno R3 + ESP8266
+
+![C++](https://img.shields.io/badge/C++-Embedded-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)
+![Arduino](https://img.shields.io/badge/Arduino_Uno_R3-00979D?style=for-the-badge&logo=arduino&logoColor=white)
+![ESP8266](https://img.shields.io/badge/ESP8266-WiFi_IoT-E7352C?style=for-the-badge&logo=espressif&logoColor=white)
+![Telegram](https://img.shields.io/badge/Telegram_Bot-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+
+Sistema de automatización, monitoreo ambiental y seguridad domiciliaria diseñado bajo una **arquitectura de doble microcontrolador**. Separa el control determinista en tiempo real (**Arduino Uno R3**) de la conectividad Wi-Fi y cifrado TLS/HTTPS (**ESP8266**), logrando baja latencia, operación autónoma sin internet y cero bloqueos ante emergencias.
+
+---
+
+## 📐 Arquitectura del Sistema
+
+```mermaid
+graph LR
+    User((Usuario Telegram)) <-->|HTTPS / TLS| TG[API Telegram]
+    TG <-->|Wi-Fi 160MHz| ESP[ESP8266]
+    ESP <-->|UART 9600 bps<br/>CMD / EVENT / STATE| UNO[Arduino Uno R3]
+    UNO --> SR[74HC595<br/>Shift Register]
+    SR --> RGB[LED RGB Blanco]
+    SR --> ALM[Buzzer + LEDs Estado]
+    UNO --> SERVO[Servomotor Puerta]
+    UNO --> LCD[LCD 16x2 I2C]
+    UNO <--> RFID[Lector RFID RC522]
+    UNO <--> SENS[DHT11 / HC-SR04 / LDR / Llama]
